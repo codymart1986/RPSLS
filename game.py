@@ -26,7 +26,7 @@ class game_mode_picker:
         
         
     def play_next_round(self):
-        print("Woiuld you like to play again?")
+        print("Would you like to play again?")
         nextRoundChoice = input("Please press y or n.")
         nextRoundChoice = self.validate_next_round_input(nextRoundChoice)
         return nextRoundChoice
