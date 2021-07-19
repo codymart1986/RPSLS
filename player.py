@@ -11,14 +11,14 @@ class Player:
             print("Invalid input, try again!")
             self.player_choice
         elif self.player_choice == 1:
-            print("Rock")
+            print("You have chosen Rock")
         elif self.player_choice == 2:
-            print("Paper")
+            print("You have chosen Paper")
         elif self.player_choice == 3:
-            print("Scissors")
+            print("You have chosen Scissors")
         elif self.player_choice == 4:
-            print("Lizard")
+            print("You have chosen Lizard")
         elif self.player_choice == 5:
-            print("Spock")
+            print("You have chosen Spock")
 
 
