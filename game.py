@@ -1,3 +1,5 @@
+from ai import AI
+from human import Human
 import re
 # written by Steve Clark
 
@@ -37,3 +39,10 @@ class game_mode_picker:
         else:
             nextRoundInput = input("Press y or n to continue or stop!")
             return self.validate_next_round_input(nextRoundInput)
+
+class single_player_game:
+    def __init__(self):
+        player_score = ()
+        cpu_score = ()
+
+    
