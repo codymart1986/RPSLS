@@ -6,7 +6,7 @@ class AI(Player):
         super().__init__()
 
     def cpu_choice(self):
-        cpu_choice = random.randint(1, 5)
+        self.cpu_choice = random.randint(1, 5)
 
         if self.cpu_choice == 1:
             print("CPU has chosen Rock")
