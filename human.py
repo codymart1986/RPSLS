@@ -24,16 +24,16 @@ class Human(Player):
     
     def validatePlayerName(self, rawNameInput): 
         if len(rawNameInput) < 2: 
-            print("\nPlayer name must be 2 characters or more") 
-            rawNameInput = input("\nPlease enter your name: ")
+            print("Player name must be 2 characters or more") 
+            rawNameInput = input("Please enter your name: ")
             return self.validatePlayerName(rawNameInput) 
         elif len(rawNameInput) > 20: 
-            print("\nPlayer name must be 20 characters or less") 
-            rawNameInput = input("\nPlease enter your name: ") 
+            print("Player name must be 20 characters or less") 
+            rawNameInput = input("Please enter your name: ") 
             return self.validatePlayerName(rawNameInput)
         elif re.match("^[a-zA-Z0-9\s]*$", rawNameInput): 
             return rawNameInput 
         else: 
-            print("\nPlayer name must contain only letters, numbers, or spaces") 
-            rawNameInput = input("\nPlease enter your name: ")
+            print("Player name must contain only letters, numbers, or spaces") 
+            rawNameInput = input("Please enter your name: ")
             return self.validatePlayerName(rawNameInput) 
