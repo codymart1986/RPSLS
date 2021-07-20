@@ -1,11 +1,14 @@
+import random
 from player import Player
 from ai import AI
 from human import Human
 import re
 #collaboration of Steve Clark and Cody Mart
+
+
 class Game:
     def __init__(self):
-        self.player_one = Human(self)
+        self.player_one = Human
         self.player_two = None
         self.cpu = AI()
 #displaying the welcome messages and rules to the game
@@ -52,7 +55,7 @@ class Game:
     def select_game_mode(self):
         print ("\nTo play against the computer, press 1. \nTo play against another player, press 2")
     modeInput = input("\nPlease select type of game you want to play! ")
-    modeInput = self.validate_game_mode(modeInput)
+    
     if modeInput == "1":
         game_mode = "Single Player Game"
     else:
@@ -164,11 +167,15 @@ class Game:
             return roundResult
 
     def game_title_and_rules(self):
-        self.gameTitle = "\nGame of Rock, Paper, Scissors, Lizard, Spock"
-        self.gameRules = "\nKeyboard keys and game rules: 1: Scissors cuts Paper (2) and decapitates Lizard (4) 2: Paper covers Rock (3) and disproves Spock (5) 3: Rock crushes Scissors (1) and crushes Lizard (4) 4: Lizard eats Paper (2) and envenomates Spock (5) 5: Spock vaporizes Rock (3) and smashes Scissors (1)" 
-
+        self.gameTitle = ("\nGame of Rock, Paper, Scissors, Lizard, Spock")
+        self.gameRules = ("\nKeyboard keys and game rules: 1: Scissors cuts Paper (2) and decapitates Lizard (4) 2: Paper covers Rock (3) and disproves Spock (5) 3: Rock crushes Scissors (1) and crushes Lizard (4) 4: Lizard eats Paper (2) and envenomates Spock (5) 5: Spock vaporizes Rock (3) and smashes Scissors (1)")
+        
+    def displayTitleRules(self):
+        print(self.gameTitle)
+        print(self.gameRules)
+            
     def start_playing_game(self):
-        titleAndRules = self.display_title_rules()
+        titleAndRules = self.displayTitleRules(" ")
         modeInput = Game()
         gameMode = modeInput.select_game_mode()
         print("\033c")
