@@ -43,7 +43,7 @@ class Game:
     def select_player_options(self, gameMode):
         player1Name = self.selectPlayerName(1)
         if gameMode == "Single player game":
-            player2Name = "Computer"
+            player2Name = AI
         else:
             player2Name = self.selectPlayerName(2)
         playerNames= [player1Name, player2Name]
@@ -145,8 +145,7 @@ class Game:
         print(gameMode)
         print("playerName[0], str(gameScore[0], + " " + str(gameScore[1]),playerNames[1]")
         newRoundScore = self.play_next_round(gameMode, playerNames, gameScore)
-        gameFinalScore = score_updater()
-        finalScore = gameFinalScore.displayFinalScore(playerNames, newRoundScore)
+        gameScore = gameScore.displayFinalScore(playerNames, newRoundScore)
     
     def select_player_options(self, gameMode):
             player1Name = self.selectPlayerName(1)
@@ -157,25 +156,6 @@ class Game:
             playerNames= [player1Name, player2Name]
             return playerNames
     
-    def selectPlayerNames(self):
-        nameInput = input("Player " + " str(playerNumber) + ", "Enter your name!")
-        playerName = self.validatePlayerName(nameInput)
-        return playerName
         
-    def validatePlayerName(self, rawNameInput): 
-        if len(rawNameInput) < 2: 
-            print("Player name must be 2 characters or more") 
-            rawNameInput = input("Please enter your name: ")
-            return self.validatePlayerName(rawNameInput) 
-        elif len(rawNameInput) > 20: 
-            print("Player name must be 20 characters or less") 
-            rawNameInput = input("Please enter your name: ") 
-            return self.validatePlayerName(rawNameInput)
-        elif re.match("^[a-zA-Z0-9\s]*$", rawNameInput): 
-            return rawNameInput 
-        else: 
-            print("Player name must contain only letters, numbers, or spaces") 
-            rawNameInput = input("Please enter your name: ")
-            return self.validatePlayerName(rawNameInput) 
 
             
