@@ -1,7 +1,7 @@
 import re
 # written by Steve Clark
 
-class game_mode_picker:
+class Game:
     
     
     def __init__(self):
