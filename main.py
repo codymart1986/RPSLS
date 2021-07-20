@@ -1,8 +1,4 @@
-import random
-
 from game import Game
-
-
 
 
 def main():
