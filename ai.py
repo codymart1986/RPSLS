@@ -3,7 +3,7 @@ import random
 
 class AI(Player):
     def __init__(self):
-        super().__init__()
+        super().__init__(self)
 
     def cpu_choice(self):
         self.cpu_choice = random.randint(1, 5)
