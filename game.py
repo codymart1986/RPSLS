@@ -147,14 +147,6 @@ class Game:
         newRoundScore = self.play_next_round(gameMode, playerNames, gameScore)
         gameScore = gameScore.displayFinalScore(playerNames, newRoundScore)
     
-    def select_player_options(self, gameMode):
-            player1Name = self.selectPlayerName(1)
-            if gameMode == "Single player game":
-                player2Name = "Computer"
-            else:
-                player2Name = self.selectPlayerName(2)
-            playerNames= [player1Name, player2Name]
-            return playerNames
     
         
 
