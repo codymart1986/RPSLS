@@ -1,10 +1,10 @@
 from game import Game
 
 
-def main():
+def main(self):
     
-    game = Game()
-    game.startPlayingGame()
+    game = Game
+    game.start_playing_game(self)
     
 if __name__ == "__main__":
-    main()
+    main('self')
