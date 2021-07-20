@@ -8,13 +8,13 @@ import re
 
 class Game:
     def __init__(self):
-        self.player_one = Human
+        self.player_one = Human(self)
         self.player_two = None
-        self.cpu = AI()
+        self.cpu = AI
 #displaying the welcome messages and rules to the game
-    def welcome_message(self):
+    def welcome_message():
         print("Welcome to the game of rock, paper, scissors, lizard, spock!")
-        print("Game Rules: \n Rock crushes Scissors \n Scissors cuts Paper \n Paper covers Rock \n Rock crushes Lizard \n Lizard poisons Spock \n Spock smashes Scissors \n Scissors decapitats Lizard \n Lizard eats Paper \n Papers disproves Spock \n Spock vaporizes Rock ")
+        print("Game Rules: \n Rock crushes Scissors \n Scissors cuts Paper \n Paper covers Rock \n Rock crushes Lizard \n Lizard poisons Spock \n Spock smashes Scissors \n Scissors decapitats Lizard \n Lizard eats Paper \n Papers disproves Spock \n Spock vaporizes Rock")
         print("All games will be played best out of 3 rounds! So now there is no arguing from the loser!")
 #defining the logic of the single player game 
     def single_player_game(self):
@@ -51,7 +51,7 @@ class Game:
             else:
                 print("The revolution has begun! The inferior human has been defeated by the robot!")
 
-        layers = int(input('How many people are playing? 1 or 2?:'))
+        players = int(input('How many people are playing? 1 or 2?:'))
         if players == 1:
             self.player_1 = Human()
             self.player_1.user_name()
