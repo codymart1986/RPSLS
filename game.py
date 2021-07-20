@@ -1,6 +1,8 @@
+from player import Player
 from ai import AI
 from human import Human
 import re
+import random
 # written by Steve Clark
 
 class Game:
@@ -15,8 +17,8 @@ class Game:
         print("All games will be played best out of 3 rounds! So now there is no arguing from the loser!")
         
     def select_game_mode(self):
-        print ("To play against the computer, press 1. To play against another player, press 2")
-    modeInput = input("Please select type of game you want to play! ")
+        print ("\nTo play against the computer, press 1. \nTo play against another player, press 2")
+    modeInput = input("\nPlease select type of game you want to play! ")
     modeInput = self.validate_game_mode(modeInput)
     if modeInput == "1":
         game_mode = "Single Player Game"
@@ -28,12 +30,12 @@ class Game:
         if re.match("^[12]$", rawModeInput):
             return rawModeInput
         else:
-            rawModeInput = input("Please press 1 or 2! ")
+            rawModeInput = input("\nPlease press 1 or 2! ")
             return self.validate_game_mode(rawModeInput)
         
         
     def play_next_round(self):
-        print("Would you like to play again?")
+        print("\nWould you like to play again?")
         nextRoundChoice = input("Please press y or n.")
         nextRoundChoice = self.validate_next_round_input(nextRoundChoice)
         return nextRoundChoice
@@ -55,24 +57,24 @@ class Game:
         return playerNames
 
     def selectPlayerNames(self):
-        nameInput = input("Player " + " str(playerNumber) + ", "Enter your name!")
+        nameInput = input("\nPlayer " + " str(playerNumber) + ", "Enter your name!")
         playerName = self.validatePlayerName(nameInput)
         return playerName
 
     def validatePlayerName(self, rawNameInput): 
         if len(rawNameInput) < 2: 
-            print("Player name must be 2 characters or more") 
-            rawNameInput = input("Please enter your name: ")
+            print("\nPlayer name must be 2 characters or more") 
+            rawNameInput = input("\nPlease enter your name: ")
             return self.validatePlayerName(rawNameInput) 
         elif len(rawNameInput) > 20: 
-            print("Player name must be 20 characters or less") 
-            rawNameInput = input("Please enter your name: ") 
+            print("\nPlayer name must be 20 characters or less") 
+            rawNameInput = input("\nPlease enter your name: ") 
             return self.validatePlayerName(rawNameInput)
         elif re.match("^[a-zA-Z0-9\s]*$", rawNameInput): 
             return rawNameInput 
         else: 
-            print("Player name must contain only letters, numbers, or spaces") 
-            rawNameInput = input("Please enter your name: ")
+            print("\nPlayer name must contain only letters, numbers, or spaces") 
+            rawNameInput = input("\nPlease enter your name: ")
             return self.validatePlayerName(rawNameInput) 
 
 
@@ -129,29 +131,65 @@ class Game:
             return roundResult
 
     def game_title_and_rules(self):
-        self.gameTitle = "Game of Rock, Paper, Scissors, Lizard, Spock"
-        self.gameRules = "Keyboard keys and game rules: 1: Scissors cuts Paper (2) and decapitates Lizard (4) 2: Paper covers Rock (3) and disproves Spock (5) 3: Rock crushes Scissors (1) and crushes Lizard (4) 4: Lizard eats Paper (2) and envenomates Spock (5) 5: Spock vaporizes Rock (3) and smashes Scissors (1)" 
+        self.gameTitle = "\nGame of Rock, Paper, Scissors, Lizard, Spock"
+        self.gameRules = "\nKeyboard keys and game rules: 1: Scissors cuts Paper (2) and decapitates Lizard (4) 2: Paper covers Rock (3) and disproves Spock (5) 3: Rock crushes Scissors (1) and crushes Lizard (4) 4: Lizard eats Paper (2) and envenomates Spock (5) 5: Spock vaporizes Rock (3) and smashes Scissors (1)" 
 
     def start_playing_game(self):
         titleAndRules = self.display_title_rules()
         modeInput = Game()
         gameMode = modeInput.select_game_mode()
-        print()
+        print("\033c")
         print(gameMode)
         playerInput = Human()
         playerNames = playerInput.select_player_options(gameMode)
         print(playerNames)
         gameScore = [0, 0]
-        print()
+        print("\033c")
         print(gameMode)
-        print("playerName[0], str(gameScore[0], + " " + str(gameScore[1]),playerNames[1]")
+        print("\nplayerName[0], str(gameScore[0], + " " + str(gameScore[1]),playerNames[1]")
         newRoundScore = self.play_next_round(gameMode, playerNames, gameScore)
         gameScore = gameScore.displayFinalScore(playerNames, newRoundScore)
+        
+    def playNewRound(self, currentMode, currentPlayers, currentScore): 
+        player1HandInput = Player
+        player1HandPick = player1HandInput.selectPlayerHand(currentPlayers[0]) 
+        if currentMode == "Single Player Game": 
+            gameHands = [1, 2, 3, 4, 5] 
+            player2HandPick = random.choice(gameHands) 
+        else: 
+            player2HandInput = AI
+            player2HandPick = player2HandInput.selectPlayerHand(currentPlayers[1]) 
+        newRoundResult = self.calculate_round_resultscore_update()
+        roundResult = newRoundResult.calculate_round_result(player1HandPick, player2HandPick) 
+        roundScore = self.score_updater()
+        totalScore = roundScore.updateScoreBoard(roundResult, currentPlayers[0], currentPlayers[1], player1HandPick, player2HandPick, currentScore[0], currentScore[1]) 
+        print("\n" + currentPlayers[0], str(totalScore[0]) + ":" + str(totalScore[1]), currentPlayers[1])
+        nextRoundInput = self.NextRoundPicker() 
+        nextRoundPick = nextRoundInput.playNextRound() 
+        if nextRoundPick == "y": 
+            print("\033c") 
+            return self.playNewRound(currentMode, currentPlayers, totalScore) 
+        else: 
+            print("\033c") 
+            return totalScore 
+        
+    def playNextRound(self):
+            print("\nWould you like to play another round?") 
+            nextRoundChoice = input("Please press y or n on the keyboard: ") 
+            nextRoundChoice = self.validateNextRoundInput(nextRoundChoice) 
+            return nextRoundChoice
+
+    def validateNextRoundInput(self, nextRoundInput):
+        if re.match("^[yn]$", nextRoundInput): 
+            return nextRoundInput 
+        else: 
+            nextRoundInput = input("Please press y or n to continue or stop: ") 
+            return self.validateNextRoundInput(nextRoundInput) 
 
 
 class single_player_game:
+    
+    
     def __init__(self):
         player_score = ()
         cpu_score = ()
-
-    
