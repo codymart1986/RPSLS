@@ -9,4 +9,9 @@ class Human:
         
         super().__init__()
         
+    def user_name(self):
+        name = input("Please enter your name:")
+        self.name = name
+
+        
     
