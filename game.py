@@ -49,7 +49,7 @@ class Game:
         playerNames= [player1Name, player2Name]
         return playerNames
     
-    def selectPlayerNames(self, playerNumber):
+    def selectPlayerNames(self):
         nameInput = input("Player " + " str(playerNumber) + ", "Enter your name!")
         playerName = self.validatePlayerName(nameInput)
         return playerName
