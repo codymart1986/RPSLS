@@ -1,11 +1,4 @@
-import random
-
 from game import Game
-from ai import AI
-from human import Human
-from player import Player
-
-
 
 
 def main():
