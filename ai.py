@@ -3,6 +3,7 @@ import random
 
 class AI(Player):
     def __init__(self):
+        
         super().__init__(self)
         self.name = "CL4PTP"
 
@@ -19,3 +20,4 @@ class AI(Player):
         elif self.cpu_choice == 5:
             print("CPU has chosen Spock")
         return self.cpu_choice
+    

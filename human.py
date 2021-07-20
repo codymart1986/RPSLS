@@ -1,11 +1,12 @@
 from player import Player
-import re
+
 #written by steve clark
 class Human:
     
     
     
-    def __init__(self, name):
+    def __init__(self):
+        
         super().__init__()
         
     
